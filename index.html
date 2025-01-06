@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mis Presets de Lightroom</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,14 +24,15 @@
     }
 
     h2 {
-      margin-top: 20px;
+      margin: 10px 0;
     }
 
     .examples {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+      justify-items: center;
+      margin: 40px 20px;
     }
 
     .example {
@@ -53,7 +53,9 @@
       font-size: 16px;
       text-decoration: none;
       border-radius: 5px;
-      margin-top: 40px;
+      margin: 40px auto;
+      display: block;
+      text-align: center;
       transition: background-color 0.3s ease;
     }
 
@@ -83,12 +85,16 @@
     <div class="example">
       <h2>Antes</h2>
       <img src="images/before1.jpg" alt="Antes de aplicar preset">
+    </div>
+    <div class="example">
       <h2>Después</h2>
       <img src="images/after1.jpg" alt="Después de aplicar preset">
     </div>
     <div class="example">
       <h2>Antes</h2>
       <img src="images/before2.jpg" alt="Antes de aplicar preset">
+    </div>
+    <div class="example">
       <h2>Después</h2>
       <img src="images/after2.jpg" alt="Después de aplicar preset">
     </div>
@@ -106,7 +112,6 @@
 
   <!-- JavaScript -->
   <script>
-    // Mostrar un modal de bienvenida al cargar la página
     document.addEventListener("DOMContentLoaded", function () {
       const welcomeModal = document.createElement("div");
       welcomeModal.style.position = "fixed";
@@ -142,34 +147,17 @@
       });
     });
 
-    // Simulación de carga al hacer clic en "Descargar Presets"
     const downloadButton = document.querySelector(".button");
     downloadButton.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevenir navegación inmediata
+      event.preventDefault();
       downloadButton.textContent = "Cargando...";
       downloadButton.style.backgroundColor = "#999";
 
       setTimeout(() => {
-        window.location.href = downloadButton.href; // Redirige inmediatamente
+        window.location.href = downloadButton.href;
         downloadButton.textContent = "Descargar Presets";
         downloadButton.style.backgroundColor = "#ff6f61";
       }, 0);
-    });
-
-    // Efecto de desplazamiento suave al navegar por la página
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      });
     });
   </script>
 </body>
