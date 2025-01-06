@@ -150,10 +150,10 @@
       downloadButton.style.backgroundColor = "#999";
 
       setTimeout(() => {
-        window.location.href = downloadButton.href; // Redirige después de 0 segundos
+        window.location.href = downloadButton.href; // Redirige inmediatamente
         downloadButton.textContent = "Descargar Presets";
         downloadButton.style.backgroundColor = "#ff6f61";
-      }, 2000);
+      }, 0);
     });
 
     // Efecto de desplazamiento suave al navegar por la página
