@@ -6,7 +6,6 @@
   <title>Mis Presets de Lightroom</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Agrega estilos básicos en este archivo para hacer que tu página se vea bien */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -105,5 +104,73 @@
     <p>Instrucciones: 1. Descarga los archivos. 2. Extrae los presets. 3. Importa a Lightroom Mobile.</p>
   </footer>
 
+  <!-- JavaScript -->
+  <script>
+    // Mostrar un modal de bienvenida al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
+      const welcomeModal = document.createElement("div");
+      welcomeModal.style.position = "fixed";
+      welcomeModal.style.top = "50%";
+      welcomeModal.style.left = "50%";
+      welcomeModal.style.transform = "translate(-50%, -50%)";
+      welcomeModal.style.background = "white";
+      welcomeModal.style.padding = "20px";
+      welcomeModal.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+      welcomeModal.style.borderRadius = "10px";
+      welcomeModal.style.zIndex = "1000";
+      welcomeModal.innerHTML = `
+        <h2>Bienvenido a Mis Presets de Lightroom</h2>
+        <p>Explora y descarga los mejores presets para transformar tus fotos.</p>
+        <button id="closeModal" style="margin-top: 20px; padding: 10px 20px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Cerrar</button>
+      `;
+
+      const overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = "0";
+      overlay.style.left = "0";
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+      overlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+      overlay.style.zIndex = "999";
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(welcomeModal);
+
+      document.getElementById("closeModal").addEventListener("click", function () {
+        document.body.removeChild(welcomeModal);
+        document.body.removeChild(overlay);
+      });
+    });
+
+    // Simulación de carga al hacer clic en "Descargar Presets"
+    const downloadButton = document.querySelector(".button");
+    downloadButton.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevenir navegación inmediata
+      downloadButton.textContent = "Cargando...";
+      downloadButton.style.backgroundColor = "#999";
+
+      setTimeout(() => {
+        window.location.href = downloadButton.href; // Redirige después de 2 segundos
+        downloadButton.textContent = "Descargar Presets";
+        downloadButton.style.backgroundColor = "#ff6f61";
+      }, 2000);
+    });
+
+    // Efecto de desplazamiento suave al navegar por la página
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
